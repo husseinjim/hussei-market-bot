@@ -44,4 +44,5 @@ print("Bot is running...")
 while True:
     schedule.run_pending()
     time.sleep(30)
+post_message("✅ البوت يعمل بنجاح! سيتم نشر تحديثات السوق تلقائيًا هنا.")
 
