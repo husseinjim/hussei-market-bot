@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Run Python bot in the background
+# Run Python bot in the background using python3
 python3 bot.py &
 
-# Run Twitter fetcher
+# Run Node.js script
 node getTwitterTrends.js
