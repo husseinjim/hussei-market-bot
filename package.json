@@ -1,12 +1,8 @@
 {
   "name": "hussei-market-bot",
   "version": "1.0.0",
-  "description": "Twitter trend bot",
-  "main": "getTwitterTrends.js",
+  "description": "Crypto market bot",
   "scripts": {
-    "start": "node getTwitterTrends.js"
-  },
-  "dependencies": {
-    "twit": "^2.2.11"
+    "start": "python3 bot.py"
   }
 }
