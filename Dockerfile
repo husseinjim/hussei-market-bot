@@ -1,19 +1,23 @@
 FROM node:18-bullseye
 
-# Install Python
+# Install Python3 & pip
 RUN apt-get update && \
-    apt-get install -y python3 python3-pip && \
-    pip3 install --upgrade pip
+    apt-get install -y python3 python3-pip
 
 # Set working directory
 WORKDIR /app
 
-# Copy project files
+# Copy files
 COPY . .
 
-# Install Python & Node.js dependencies
-RUN pip3 install -r requirements.txt
+# Install Node.js dependencies
 RUN npm install
 
-# Start both scripts
-CMD ["bash", "start.sh"]
+# Install Python dependencies if needed
+# RUN pip3 install -r requirements.txt
+
+# Make script executable
+RUN chmod +x start.sh
+
+# Start the script
+CMD ["./start.sh"]
