@@ -1,8 +1,11 @@
 {
-  "name": "twitter-trend-script",
+  "name": "get-twitter-trends",
   "version": "1.0.0",
   "main": "getTwitterTrends.js",
   "dependencies": {
-    "twitter-trends-api": "^1.0.0"
+    "twit": "^2.2.11"
+  },
+  "scripts": {
+    "start": "node getTwitterTrends.js"
   }
 }
