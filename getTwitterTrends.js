@@ -1,3 +1,5 @@
+// getTwitterTrends.js
+
 const Twit = require('twit');
 
 const T = new Twit({
@@ -9,13 +11,14 @@ const T = new Twit({
   strictSSL:            true,
 });
 
+// Get top trending topic worldwide
 T.get('trends/place', { id: 1 }, function(err, data, response) {
   if (err) {
     console.error("Twitter error:", err);
     return;
   }
 
-  const trends = data[0].trends.slice(0, 5); // top 5 trends
+  const trends = data[0].trends.slice(0, 5); // Get top 5 trends
   trends.forEach((trend, index) => {
     console.log(`${index + 1}. ${trend.name}`);
   });
