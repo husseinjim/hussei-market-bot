@@ -7,8 +7,10 @@ CHANNEL = "@HusseiAlaswaq"
 bot = Bot(token=TOKEN)
 
 def post_message(msg):
-    try: bot.send_message(chat_id=CHANNEL, text=msg, parse_mode="HTML")
-    except Exception as e: print("Post failed:", e)
+    try:
+        bot.send_message(chat_id=CHANNEL, text=msg, parse_mode="HTML")
+    except Exception as e:
+        print("Post failed:", e)
 
 # 1. Whale Alerts – Daily
 def whale_alert_daily():
@@ -84,15 +86,7 @@ def dominance():
     dom = requests.get("https://api.coingecko.com/api/v3/global").json()["data"]["market_cap_percentage"]
     post_message(f"📌 <b>BTC Dominance:</b> {dom['btc']:.1f}% | <b>ETH Dominance:</b> {dom['eth']:.1f}%")
 
-# 12. Social Trends – Daily via NodeJS wrapper
-def social_trend():
-    try:
-        from subprocess import check_output
-        trends = check_output(["node","getTwitterTrends.js"]).decode().splitlines()
-        post_message(f"📱 <b>ترند اليوم:</b> {trends[0] if trends else 'N/A'}")
-    except Exception as e: print("Twitter trend error:", e)
-
-# Schedule tasks
+# Scheduling
 schedule.every().day.at("10:00").do(whale_alert_daily)
 schedule.every().hour.at(":15").do(token_listing)
 schedule.every().hour.at(":45").do(fear_greed)
@@ -104,7 +98,6 @@ schedule.every(2).days.at("12:30").do(defillama_tvl)
 schedule.every(4).days.at("13:00").do(stablecoin_supply)
 schedule.every().day.at("14:00").do(gas_fees)
 schedule.every().day.at("14:30").do(dominance)
-schedule.every().day.at("17:00").do(social_trend)
 
 post_message("✅ البوت جاهز وسجل المؤشرات الحية!")  # Startup message
 
