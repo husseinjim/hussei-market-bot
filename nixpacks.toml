@@ -1,11 +1,15 @@
-[phases.setup]
-  pkgs = ["nodejs-18_x", "python310"]
+[devPackages]
+nodejs = "18"
+python = "3.10"
 
-[phases.install]
-  cmds = ["npm install", "pip install -r requirements.txt"]
+[phases.setup]
+nixPkgs = ["python3", "nodejs", "gcc"]
 
 [phases.build]
-  # nothing special
+cmds = [
+  "pip install -r requirements.txt",
+  "npm install"
+]
 
-[phases.start]
-  cmds = ["python bot.py"]
+[start]
+cmd = "python bot.py"
