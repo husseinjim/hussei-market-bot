@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Start the Python bot
+# Run Python bot in the background
 python3 bot.py &
 
-# Start the Twitter trends fetcher
+# Run Twitter fetcher
 node getTwitterTrends.js
