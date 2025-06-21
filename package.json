@@ -1,11 +1,12 @@
 {
-  "name": "get-twitter-trends",
+  "name": "hussei-market-bot",
   "version": "1.0.0",
+  "description": "Twitter trend bot",
   "main": "getTwitterTrends.js",
-  "dependencies": {
-    "twit": "^2.2.11"
-  },
   "scripts": {
     "start": "node getTwitterTrends.js"
+  },
+  "dependencies": {
+    "twit": "^2.2.11"
   }
 }
