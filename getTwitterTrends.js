@@ -1,8 +1,22 @@
-// getTwitterTrends.js
-const TwitterTrends = require('twittertrendsapi.js');
+const Twit = require('twit');
 
-(async () => {
-  const tt = new TwitterTrends({ expire: 15 * 60 * 1000 });
-  const topics = await tt.getTopics({ id: '1', limit: 5 });  // Worldwide trends
-  topics.forEach(t => console.log(t.name));  // prints trending topic names
-})();
+const T = new Twit({
+  consumer_key:         process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret:      process.env.TWITTER_CONSUMER_SECRET,
+  access_token:         process.env.TWITTER_ACCESS_TOKEN,
+  access_token_secret:  process.env.TWITTER_ACCESS_SECRET,
+  timeout_ms:           60 * 1000,
+  strictSSL:            true,
+});
+
+T.get('trends/place', { id: 1 }, function(err, data, response) {
+  if (err) {
+    console.error("Twitter error:", err);
+    return;
+  }
+
+  const trends = data[0].trends.slice(0, 5); // top 5 trends
+  trends.forEach((trend, index) => {
+    console.log(`${index + 1}. ${trend.name}`);
+  });
+});
