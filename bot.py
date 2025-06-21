@@ -3,7 +3,7 @@ from telegram import Bot
 from datetime import datetime
 
 TOKEN = "7506377236:AAFB-Na1T0P80FRM7pZlPo35SqoK75jh6uA"
-CHANNEL = "@HusseiAlaswaq"
+CHANNEL = "@alnajimhussein"
 bot = Bot(token=TOKEN)
 
 def post_message(msg):
