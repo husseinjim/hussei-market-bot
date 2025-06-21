@@ -1,0 +1,11 @@
+[phases.setup]
+  pkgs = ["nodejs-18_x", "python310"]
+
+[phases.install]
+  cmds = ["npm install", "pip install -r requirements.txt"]
+
+[phases.build]
+  # nothing special
+
+[phases.start]
+  cmds = ["python bot.py"]
